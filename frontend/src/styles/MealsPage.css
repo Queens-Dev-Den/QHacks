@@ -1,0 +1,8 @@
+.mealspage-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+    padding-top: 0px;
+}

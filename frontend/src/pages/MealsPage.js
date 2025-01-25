@@ -4,7 +4,7 @@ import '../styles/MealsPage.css';
 const MealsPage = () => {
 
   return (
-    <div>
+    <div className="mealspage-container">
       <h1>Meals</h1>
     </div>
   );
