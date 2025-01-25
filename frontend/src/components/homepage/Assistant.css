@@ -76,15 +76,22 @@
   }
   
   .chat-input {
-    border-top: 0.3em solid white;
+    border-top: 0.35em solid white;
     width: 100%;
     padding-top: 1em;
   }
 
   .chat-input-form {
     display: flex;
+    align-items: center;
+    margin-bottom: 1em;
   }
 
   .chat-input-field {
     width: fill;
+    height: 2em;
+  }
+
+  .chat-submit-button {
+    height: 2em;
   }
