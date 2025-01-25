@@ -78,5 +78,13 @@
   .chat-input {
     border-top: 0.3em solid white;
     width: 100%;
-    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    padding-top: 1em;
+  }
+
+  .chat-input-form {
+    display: flex;
+  }
+
+  .chat-input-field {
+    width: fill;
   }

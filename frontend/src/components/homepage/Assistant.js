@@ -4,7 +4,7 @@ import { GiBiceps } from "react-icons/gi";
 
 const Assistant = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [prompt, setPrompt] = useState('');
+  const [content, setContent] = useState('');
   const [responseMessage, setResponseMessage] = useState('Welcome! How can I assist you today?');
   const popupRef = useRef(null);
 
@@ -39,7 +39,7 @@ const Assistant = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt }),
+            body: JSON.stringify({ content }),
         });
 
         if (response.ok) {
@@ -53,7 +53,7 @@ const Assistant = () => {
         setResponseMessage('Failed to retrieve message');
     }
 
-    setPrompt('');
+    setContent('');
     };
 
   return (
@@ -74,12 +74,12 @@ const Assistant = () => {
                 <p>{responseMessage}</p>
             </div>
             <div className="chat-input">
-                <form className="chat-input" onSubmit={handleSubmit}>
+                <form className="chat-input-form" onSubmit={handleSubmit}>
                     <input
                     type="text"
-                    value={prompt}
-                    id='prompt'
-                    onChange={(e) => setPrompt(e.target.value)}
+                    value={content}
+                    id='content'
+                    onChange={(e) => setContent(e.target.value)}
                     placeholder="Start typing..."
                     className="chat-input-field"
                     required
