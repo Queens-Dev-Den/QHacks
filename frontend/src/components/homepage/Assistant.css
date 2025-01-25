@@ -35,3 +35,48 @@
     align-self: center;
     font-size: 1em;
 }
+
+.chat-popup {
+    z-index: 10;
+    background-color: black;
+    border: 0.3em solid white;
+    border-radius: 1em;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: -8em;
+    height: 71vh;
+    position: fixed;
+    width: 83%;
+    padding: 0.5em;
+}
+
+.chat-header {
+    align-self: center;
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+    padding: 0 1em; /* Add padding to the left and right */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  }
+  
+  .chat-body {
+    border-top: 0.3em solid white;
+    flex-grow: 1; /* This will make the chat body take up the remaining space */
+    width: 100%;
+    overflow-y: auto; /* Ensure the chat body is scrollable if content overflows */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    font-weight: 500;
+  }
+  
+  .chat-input {
+    border-top: 0.3em solid white;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  }
