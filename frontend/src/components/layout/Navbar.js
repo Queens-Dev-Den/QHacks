@@ -17,8 +17,12 @@ const Navbar = () => {
         navigate('/');
     };
 
-    const navigateCreate = () => {
-        navigate('/create');
+    const navigateWorkout = () => {
+        navigate('/workout');
+    }
+
+    const navigateMeals = () => {
+        navigate('/meals');
     }
 
     const location = useLocation();
@@ -36,9 +40,15 @@ const Navbar = () => {
                         </button>
                     </li>
                     <li className="nav-item">
-                        <button onClick={navigateCreate} className={`nav-button ${location.pathname === '/create' ? 'active' : ''}`} >
+                        <button onClick={navigateWorkout} className={`nav-button ${location.pathname === '/workout' ? 'active' : ''}`} >
                             <BiSolidPlusSquare className="nav-icon" />
-                            New Event
+                            Workout
+                        </button>
+                    </li>
+                    <li className="nav-item">
+                        <button onClick={navigateMeals} className={`nav-button ${location.pathname === '/meals' ? 'active' : ''}`} >
+                            <BiSolidPlusSquare className="nav-icon" />
+                            Meals
                         </button>
                     </li>
                     <li className="nav-item">
