@@ -1,0 +1,108 @@
+.signup-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #222222;
+}
+
+.signup-message {
+    justify-self: center;
+    margin-top: -3em;
+    font-size: 1.875em;
+    color: white;
+}
+  
+.signup-form {
+    background: transparent;
+    padding: 1.25em;
+    border-radius: 0.5em;
+    width: 22em;
+}
+
+.input-group {
+    margin-bottom: 0.9em;
+}
+  
+.input-group label {
+    display: block;
+    margin-bottom: 0.3em;
+    font-size: 1.125em;
+    font-weight: 400;
+    color: white;
+}
+  
+.input-group input {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    box-sizing: border-box;
+    background-color: black;
+    border: none;
+    color: white;
+}
+  
+.password-input-group {
+    position: relative;
+}
+  
+.password-input-group input {
+    width: 100%;
+    padding-right: 3.125em; /* Add padding to the right to avoid overlap with the button */
+}
+  
+.toggle-password {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875em;
+    width: fit-content;
+}
+  
+.toggle-password:hover {
+    text-decoration: underline;
+}
+
+.submit-button {
+    margin-top: 0.625em;
+    font-size: medium;
+    font-weight: bold;
+    width: 100%;
+    padding: 0.625em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+input {
+    font-size: 0.875em;
+}
+
+.login-text {
+    margin-top: 2.5em;
+    font-size: 1em;
+    font-weight: 400;
+    color: white;
+}
+  
+.login-link {
+    color: #007bff;
+    text-decoration: none;
+}
+  
+.login-link:hover {
+    text-decoration: underline;
+}
