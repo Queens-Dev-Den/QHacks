@@ -57,6 +57,36 @@ const WorkoutHolder = () => {
             "updatedAt": "2025-01-25T21:17:09.000Z"
           },
           {
+            "id": 5,
+            "name": "Bench Press",
+            "weight": 15,
+            "reps": 12,
+            "sets": 3,
+            "workoutId": 2,
+            "createdAt": "2025-01-25T21:17:09.000Z",
+            "updatedAt": "2025-01-25T21:17:09.000Z"
+          },
+          {
+            "id": 6,
+            "name": "Bench Press",
+            "weight": 15,
+            "reps": 12,
+            "sets": 3,
+            "workoutId": 2,
+            "createdAt": "2025-01-25T21:17:09.000Z",
+            "updatedAt": "2025-01-25T21:17:09.000Z"
+          },
+          {
+            "id": 7,
+            "name": "Bench Press",
+            "weight": 15,
+            "reps": 12,
+            "sets": 3,
+            "workoutId": 2,
+            "createdAt": "2025-01-25T21:17:09.000Z",
+            "updatedAt": "2025-01-25T21:17:09.000Z"
+          },
+          {
             "id": 3,
             "name": "Leg Press",
             "weight": 20,

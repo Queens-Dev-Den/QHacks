@@ -34,22 +34,23 @@
     padding: 1em;
     border: 0.2em solid #ccc;
     border-radius: 1em;
-    flex: 1 1 calc(50% - 1em); /* Adjust the width to fit two items per row */
     box-sizing: border-box;
+    width: 100%;
 }
 
 .workout-details {
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: start;
     width: 100%;
 }
 
 .workout-name {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 0.5em;
 }
 
 .exercise-item {
@@ -61,14 +62,24 @@
 
 .exercise-details {
     display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1.1em;
 }
 
 .exercise-reps {
-    font-size: 0.6em;;
+    font-size: 0.6em;
     color: #666;
 }
 
 .exercise-name {
     margin-top: 0.3em;
     margin-bottom: 0;
+}
+
+.exercise-sets {
+    margin-top: 0.3em;
+    margin-bottom: 0;
+    margin-left: auto; /* Pushes the element to the right */
+    padding-left: 0.4em;
 }

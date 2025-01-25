@@ -5,7 +5,7 @@ const { Workout, Exercise, User } = require('../models'); // Adjust the path as 
 // POST request to create a workout
 router.post('/', async (req, res) => {
   try {
-    const { userId, category, exercises } = req.body;
+    const { userId, name, category, exercises } = req.body;
 
     // Validate input
     if (!userId || !category || !Array.isArray(exercises)) {
@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
     // Create the workout
     const workout = await Workout.create({
       userId,
+      name,
       category,
     });
 
