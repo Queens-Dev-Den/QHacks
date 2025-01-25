@@ -6,13 +6,6 @@
     align-items: center;
     position: relative;
 }
-
-.planit-full-logo {
-    height: 3.75em;
-    position: absolute;
-    top: 1.25em;
-    left: 1.25em;
-}
   
 .login-form {
     background: white;
