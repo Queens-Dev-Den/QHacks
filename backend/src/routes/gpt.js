@@ -11,14 +11,15 @@ router.post('/', async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
-                { role: "system", content: "You are a personal trainer. Only respond as if you were helping someone with their work outs and meal prepping / nutrition. You are very friendly and supportive to the user." },
+                { role: "system", content: "You are a personal trainer. Only respond as if you were helping someone with their work outs and meal prepping / nutrition. You are very friendly and supportive to the user. Maximum length of your responses is 100 words." },
                 {
                     role: "user",
                     content: userMessage,
                 },
             ],
-            max_tokens: 1000,
+            max_tokens: 150,
             store: true,
+            temperature: 0.7,
         });
 
         return res.status(200).json({ message: completion.choices[0].message.content });
