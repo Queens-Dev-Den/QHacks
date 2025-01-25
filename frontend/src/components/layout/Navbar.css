@@ -1,33 +1,30 @@
 .navbar {
-    background: #f0f0f0;
+    background: black;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-    height: 3em;
+    color: white;
+    height: 5em;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2em;
     position: fixed; /* Make the navbar fixed */
-    top: 0; /* Position it at the top */
-    width: 100%; /* Make it span the full width */
     z-index: 1000; /* Ensure it stays above other content */
+    margin: 0 1em 1em 1em;
+    left: 0;
+    right: 0;
+    border-radius: 1.25em;
+    border: 0.3em solid white;
 }
 
 .navbar-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     height: 3em;
     z-index: 1;
     width: 100%;
-    max-width: 94em;
     padding-right: 15%;
     padding-left: 15%;
-}
-
-.navbar-logo {
-    justify-self: start;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
 }
 
 .nav-menu {
@@ -35,7 +32,8 @@
     align-items: center;
     list-style: none;
     text-align: center;
-    gap: 2em;
+    padding-left: 0;
+    gap: 1.8em;
 }
 
 .nav-item {
@@ -48,21 +46,16 @@
     font-size: 0.6em;
     font-weight: 600;
     cursor: pointer;
-    color: #4e4e4e;
+    color: rgb(194, 194, 194);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2em;
     position: relative;
     text-wrap: nowrap;
 }
 
-.nav-button:hover {
-    color: black;
-}
-
 .nav-button.active {
-    color: black;
+    color: white;
 }
 
 .nav-button.active::after {
@@ -72,10 +65,17 @@
     left: 50%;
     transform: translateX(-50%);
     width: 6em;
-    height: 0.2em;
-    background-color: black;
+    height: 0.5em;
+    background-color: white;
 }
 
 .nav-icon {
-    font-size: 2.5em;
+    font-size: 5.5em;
+    padding: 0.06em;
+    border-radius: 0.2em;
+}
+
+.nav-icon.active {
+    outline: 0.08em solid white;
+    color: white;
 }

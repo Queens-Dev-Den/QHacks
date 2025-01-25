@@ -1,0 +1,9 @@
+.summary-container {
+    border: 0.3em solid white;
+    height: 35vh;
+    border-radius: 1.25em;
+    margin: 1.5em;
+    text-align: left;
+    padding: 1em;
+    background-color: black;
+}
