@@ -6,11 +6,11 @@
     align-items: center;
     position: relative;
     background-color: #222222;
+    margin-top: -2em;
 }
 
 .login-message {
     justify-self: center;
-    margin-top: -3em;
     font-size: 1.875em;
     color: white;
 }
@@ -105,4 +105,8 @@ input {
   
 .signup-link:hover {
     text-decoration: underline;
+}
+
+.activize-logo {
+    height: 5em;
 }
