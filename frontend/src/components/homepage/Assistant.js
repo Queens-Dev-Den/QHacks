@@ -74,7 +74,7 @@ const Assistant = () => {
                 <p>{responseMessage}</p>
             </div>
             <div className="chat-input">
-                <form className="chat-input" onSubmit={handleSubmit}>
+                <form className="chat-input-form" onSubmit={handleSubmit}>
                     <input
                     type="text"
                     value={content}
