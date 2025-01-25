@@ -1,142 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { GiBiceps } from 'react-icons/gi';
 import './WorkoutHolder.css';
 
-const WorkoutHolder = () => {
-    const workouts = [
-      {
-        "id": 1,
-        "name": "Upper Hypertrophy",
-        "category": "Arms 2",
-        "createdAt": "2025-01-25T21:17:03.000Z",
-        "updatedAt": "2025-01-25T21:17:03.000Z",
-        "userId": 2,
-        "exercises": [
-          {
-            "id": 2,
-            "name": "Bench Press",
-            "weight": 15,
-            "reps": 12,
-            "sets": 3,
-            "workoutId": 1,
-            "createdAt": "2025-01-25T21:17:03.000Z",
-            "updatedAt": "2025-01-25T21:17:03.000Z"
+const WorkoutHolder = ({ userInfo }) => {
+  const [workouts, setWorkouts] = useState([]);
+
+  useEffect(() => {
+    const fetchWorkouts = async () => {
+      if (!userInfo) return;
+
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/workouts/get-users-workouts`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
           },
-          {
-            "id": 1,
-            "name": "Leg Press",
-            "weight": 20,
-            "reps": 10,
-            "sets": 3,
-            "workoutId": 1,
-            "createdAt": "2025-01-25T21:17:03.000Z",
-            "updatedAt": "2025-01-25T21:17:03.000Z"
-          }
-        ],
-        "user": {
-          "username": "testing2",
-          "email": "testin2g@zach.com"
+          body: JSON.stringify({ userId: userInfo.id }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setWorkouts(data);
+        } else {
+          console.error('Failed to fetch workouts');
         }
-      },
-      {
-        "id": 2,
-        "name": "Upper Hypertrophy",
-        "category": "Arms 3",
-        "createdAt": "2025-01-25T21:17:09.000Z",
-        "updatedAt": "2025-01-25T21:17:09.000Z",
-        "userId": 2,
-        "exercises": [
-          {
-            "id": 4,
-            "name": "Bench Press",
-            "weight": 15,
-            "reps": 12,
-            "sets": 3,
-            "workoutId": 2,
-            "createdAt": "2025-01-25T21:17:09.000Z",
-            "updatedAt": "2025-01-25T21:17:09.000Z"
-          },
-          {
-            "id": 5,
-            "name": "Bench Press",
-            "weight": 15,
-            "reps": 12,
-            "sets": 3,
-            "workoutId": 2,
-            "createdAt": "2025-01-25T21:17:09.000Z",
-            "updatedAt": "2025-01-25T21:17:09.000Z"
-          },
-          {
-            "id": 6,
-            "name": "Bench Press",
-            "weight": 15,
-            "reps": 12,
-            "sets": 3,
-            "workoutId": 2,
-            "createdAt": "2025-01-25T21:17:09.000Z",
-            "updatedAt": "2025-01-25T21:17:09.000Z"
-          },
-          {
-            "id": 7,
-            "name": "Bench Press",
-            "weight": 15,
-            "reps": 12,
-            "sets": 3,
-            "workoutId": 2,
-            "createdAt": "2025-01-25T21:17:09.000Z",
-            "updatedAt": "2025-01-25T21:17:09.000Z"
-          },
-          {
-            "id": 3,
-            "name": "Leg Press",
-            "weight": 20,
-            "reps": 10,
-            "sets": 3,
-            "workoutId": 2,
-            "createdAt": "2025-01-25T21:17:09.000Z",
-            "updatedAt": "2025-01-25T21:17:09.000Z"
-          }
-        ],
-        "user": {
-          "username": "testing2",
-          "email": "testin2g@zach.com"
-        }
-      },
-      {
-        "id": 3,
-        "name": "Upper Hypertrophy",
-        "category": "Arms 3",
-        "createdAt": "2025-01-25T21:17:09.000Z",
-        "updatedAt": "2025-01-25T21:17:09.000Z",
-        "userId": 2,
-        "exercises": [
-          {
-            "id": 4,
-            "name": "Bench Press",
-            "weight": 15,
-            "reps": 12,
-            "sets": 3,
-            "workoutId": 2,
-            "createdAt": "2025-01-25T21:17:09.000Z",
-            "updatedAt": "2025-01-25T21:17:09.000Z"
-          },
-          {
-            "id": 3,
-            "name": "Leg Press",
-            "weight": 20,
-            "reps": 10,
-            "sets": 3,
-            "workoutId": 2,
-            "createdAt": "2025-01-25T21:17:09.000Z",
-            "updatedAt": "2025-01-25T21:17:09.000Z"
-          }
-        ],
-        "user": {
-          "username": "testing2",
-          "email": "testin2g@zach.com"
-        }
+      } catch (error) {
+        console.error('Error fetching workouts:', error);
       }
-    ]
+    };
+
+    fetchWorkouts();
+  }, [userInfo]);
   
     return (
       <div className="workout-container">
