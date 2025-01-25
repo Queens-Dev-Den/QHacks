@@ -1,0 +1,33 @@
+.settings {
+    position: absolute;
+    display: inline-block;
+    right: 1.5em;
+    top: 1.3em;
+  }
+  
+  .settings-icon {
+    font-size: 2em;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 2.5em;
+    right: -0.5em;
+    background-color: black;
+    border: 0.2em solid white;
+    border-radius: 0.75em;
+    z-index: 1000;
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dropdown-menu li {
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-weight: 600;
+  }

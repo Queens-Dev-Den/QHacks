@@ -1,34 +1,31 @@
 .navbar {
-    background: #222222;
+    background: black;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
     color: white;
-    height: 3em;
+    height: 5em;
     bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2em;
     position: fixed; /* Make the navbar fixed */
-    width: 100%; /* Make it span the full width */
+    width: 90%; /* Make it span the full width */
     z-index: 1000; /* Ensure it stays above other content */
+    margin: 0 auto 1em auto;
+    left: 0;
+    right: 0;
+    border-radius: 1.25em;
+    border: 0.3em solid white;
 }
 
 .navbar-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     height: 3em;
     z-index: 1;
     width: 100%;
-    max-width: 94em;
     padding-right: 15%;
     padding-left: 15%;
-}
-
-.navbar-logo {
-    justify-self: start;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
 }
 
 .nav-menu {
@@ -36,6 +33,7 @@
     align-items: center;
     list-style: none;
     text-align: center;
+    padding-left: 0;
     gap: 2em;
 }
 
