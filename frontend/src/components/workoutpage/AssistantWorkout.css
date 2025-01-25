@@ -1,0 +1,70 @@
+.assistant-workout-container {
+    display: flex;
+    flex-direction: column;
+    border: 0.3em solid white;
+    border-radius: 1.25em;
+    margin: 1em auto;
+    text-align: left;
+    background-color: black;
+    align-items: flex-start;
+    padding: 1em;
+    width: calc(100% - 2em); /* Ensure the container has margins on each side */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.top-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.assistant-workout-top-text {
+    margin: 0;
+    color: white;
+}
+
+.assistant-workout-title {
+    color: white;
+    margin: 0.5em 0;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    width: 100%;
+}
+
+.exercise-item {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    flex: 1 1 calc(50% - 1em); /* Adjust the width to fit two items per row */
+    box-sizing: border-box;
+}
+
+.exercise-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.exercise-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.exercise-reps {
+    font-size: 14px;
+    color: #666;
+}
