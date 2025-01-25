@@ -85,13 +85,24 @@
     display: flex;
     align-items: center;
     margin-bottom: 1em;
+    gap: 0.5em;
   }
 
   .chat-input-field {
     width: fill;
     height: 2em;
+    border-radius: 0.5em;
+    background-color: black;
+    color: white;
+    border: 0.2em solid white;
+    padding-left: 0.5em;
   }
 
   .chat-submit-button {
-    height: 2em;
+    height: 2.5em;
+    border-radius: 0.5em;
+    color: white;
+    font-weight: bold;
+    background-color: #007bff;
+    border: none;
   }

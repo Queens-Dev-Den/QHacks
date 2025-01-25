@@ -4,7 +4,7 @@ const router = express.Router();
 const { OpenAI } = require('openai');
 const openai = new OpenAI();
 
-// prompt chatgpt
+// prompt trainer
 router.post('/', async (req, res) => {
     try {
         const userMessage = req.body.content;
