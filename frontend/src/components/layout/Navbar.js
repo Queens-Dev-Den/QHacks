@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
-import { PiHouseFill } from "react-icons/pi";
-import { BiSolidPlusSquare } from "react-icons/bi";
+import { HiHome } from "react-icons/hi2";
+import { MdOutlineFoodBank } from "react-icons/md";
+import { PiBarbell } from "react-icons/pi";
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -26,21 +27,18 @@ const Navbar = () => {
             <div className="navbar-container">
                 <ul className='nav-menu'>
                     <li className="nav-item">
-                        <button onClick={navigateHome} className={`nav-button ${location.pathname === '/' ? 'active' : ''}`}>
-                            <PiHouseFill className="nav-icon" />
-                            Home
+                        <button onClick={navigateWorkout} className={"nav-button"} >
+                            <PiBarbell className={`nav-icon ${location.pathname === '/workout' ? 'active' : ''}`} />
                         </button>
                     </li>
                     <li className="nav-item">
-                        <button onClick={navigateWorkout} className={`nav-button ${location.pathname === '/workout' ? 'active' : ''}`} >
-                            <BiSolidPlusSquare className="nav-icon" />
-                            Workout
+                        <button onClick={navigateHome} className={"nav-button"}>
+                            <HiHome className={`nav-icon ${location.pathname === '/' ? 'active' : ''}`} />
                         </button>
                     </li>
                     <li className="nav-item">
-                        <button onClick={navigateMeals} className={`nav-button ${location.pathname === '/meals' ? 'active' : ''}`} >
-                            <BiSolidPlusSquare className="nav-icon" />
-                            Meals
+                        <button onClick={navigateMeals} className={"nav-button"} >
+                            <MdOutlineFoodBank className={`nav-icon ${location.pathname === '/meals' ? 'active' : ''}`} />
                         </button>
                     </li>
                 </ul>

@@ -38,6 +38,7 @@ const LoginPage = () => {
 
     return (
         <div className="login-page">
+            <img src="Activize-logo.png" className="activize-logo" alt='Activize Logo'/>
             <h2 className='login-message'>Welcome to Activize</h2>
             <form className='login-form' onSubmit={handleSubmit}>
                 {error && <p className="error">{error}</p>}
