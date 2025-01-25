@@ -31,6 +31,7 @@ const Assistant = () => {
   }, [isChatOpen]);
 
   const handleSubmit = async (e) => {
+    setResponseMessage('Thinking...');
     e.preventDefault();
 
     try {
