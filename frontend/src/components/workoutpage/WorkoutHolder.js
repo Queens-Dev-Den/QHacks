@@ -1,8 +1,8 @@
 import React from 'react';
 import { GiBiceps } from 'react-icons/gi';
-import './AssistantWorkout.css';
+import './WorkoutHolder.css';
 
-const AssistantWorkout = () => {
+const WorkoutHolder = () => {
     const exercises = [
       { name: 'Bicep Curls', reps: '3 sets of 12 reps' },
       { name: 'Tricep Dips', reps: '3 sets of 15 reps' },
@@ -11,12 +11,8 @@ const AssistantWorkout = () => {
     ];
   
     return (
-      <div className="assistant-workout-container">
-        <div className="top-content">
-          <p className="assistant-workout-top-text">Today is...</p>
-        </div>
-        <div className='bottom-content'>
-            <h1 className="assistant-workout-title">Arms</h1>
+      <div className="workout-container">
+        <div className='content'>
             <div className="exercise-list">
             {exercises.map((exercise, index) => (
                 <div key={index} className="exercise-item">
@@ -32,4 +28,4 @@ const AssistantWorkout = () => {
     );
 };
 
-export default AssistantWorkout;
+export default WorkoutHolder;
