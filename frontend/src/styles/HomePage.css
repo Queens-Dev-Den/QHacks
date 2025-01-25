@@ -3,7 +3,7 @@
     flex-direction: column;
     height: 100vh; /* Full viewport height */
     text-align: center;
-    padding-top: 0px;
+    padding-top: 2em;
 }
 
 .homepage-title {

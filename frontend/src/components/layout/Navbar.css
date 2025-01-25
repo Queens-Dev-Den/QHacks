@@ -9,9 +9,8 @@
     align-items: center;
     font-size: 1.2em;
     position: fixed; /* Make the navbar fixed */
-    width: 90%; /* Make it span the full width */
     z-index: 1000; /* Ensure it stays above other content */
-    margin: 0 auto 1em auto;
+    margin: 0 1em 1em 1em;
     left: 0;
     right: 0;
     border-radius: 1.25em;
@@ -34,7 +33,7 @@
     list-style: none;
     text-align: center;
     padding-left: 0;
-    gap: 2em;
+    gap: 1.8em;
 }
 
 .nav-item {
@@ -51,7 +50,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2em;
     position: relative;
     text-wrap: nowrap;
 }
@@ -67,10 +65,17 @@
     left: 50%;
     transform: translateX(-50%);
     width: 6em;
-    height: 0.2em;
+    height: 0.5em;
     background-color: white;
 }
 
 .nav-icon {
-    font-size: 2.5em;
+    font-size: 5.5em;
+    padding: 0.06em;
+    border-radius: 0.2em;
+}
+
+.nav-icon.active {
+    outline: 0.08em solid white;
+    color: white;
 }
