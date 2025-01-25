@@ -9,6 +9,8 @@
     align-items: flex-start;
     padding: 1em;
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    height: 45vh;
+    overflow-y: scroll;
 }
 
 .content {
@@ -18,7 +20,7 @@
     width: 100%;
 }
 
-.exercise-list {
+.workout-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -26,7 +28,7 @@
     width: 100%;
 }
 
-.exercise-item {
+.workout-item {
     display: flex;
     align-items: center;
     padding: 1em;
@@ -36,18 +38,37 @@
     box-sizing: border-box;
 }
 
-.exercise-details {
+.workout-details {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
 }
 
-.exercise-name {
-    font-size: 18px;
+.workout-name {
+    font-size: 1em;
     font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.exercise-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.exercise-details {
+    display: flex;
 }
 
 .exercise-reps {
-    font-size: 14px;
+    font-size: 0.6em;;
     color: #666;
+}
+
+.exercise-name {
+    margin-top: 0.3em;
+    margin-bottom: 0;
 }
