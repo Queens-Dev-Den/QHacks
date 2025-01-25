@@ -5,22 +5,23 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    background-color: #222222;
+}
+
+.login-message {
+    justify-self: center;
+    margin-top: -3em;
+    font-size: 1.875em;
+    color: white;
 }
   
 .login-form {
-    background: white;
+    background: transparent;
     padding: 1.25em;
     border-radius: 0.5em;
-    box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.25);
-    width: 25em;
+    width: 22em;
 }
-  
-.login-form h2 {
-    margin-bottom: 0.9em;
-    margin-top: 0.5em;
-    font-size: 1.875em;
-}
-  
+
 .input-group {
     margin-bottom: 0.9em;
 }
@@ -30,6 +31,7 @@
     margin-bottom: 0.3em;
     font-size: 1.125em;
     font-weight: 400;
+    color: white;
 }
   
 .input-group input {
@@ -37,6 +39,9 @@
     padding: 0.5em;
     border-radius: 0.25em;
     box-sizing: border-box;
+    background-color: black;
+    border: none;
+    color: white;
 }
   
 .password-input-group {
@@ -90,6 +95,7 @@ input {
     margin-top: 2.5em;
     font-size: 1em;
     font-weight: 400;
+    color: white;
 }
   
 .signup-link {
