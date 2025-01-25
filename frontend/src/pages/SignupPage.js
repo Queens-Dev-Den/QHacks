@@ -46,8 +46,8 @@ const SignupPage = () => {
 
     return (
         <div className="signup-page">
+            <h2 className='signup-message'>Create an Account</h2>
             <form className='signup-form' onSubmit={handleSubmit}>
-                <h2>Sign Up</h2>
                 {error && <p className="error">{error}</p>}
                 {success && <p className="success">{success}</p>}
                 <div className='input-group'>

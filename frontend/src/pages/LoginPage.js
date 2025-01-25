@@ -38,8 +38,8 @@ const LoginPage = () => {
 
     return (
         <div className="login-page">
+            <h2 className='login-message'>Welcome to Activize</h2>
             <form className='login-form' onSubmit={handleSubmit}>
-                <h2>Login</h2>
                 {error && <p className="error">{error}</p>}
                 <div className='input-group'>
                     <label htmlFor='email'>Email</label>
@@ -73,7 +73,7 @@ const LoginPage = () => {
                 <button className="submit-button" type='submit'>Login</button>
             </form>
             <p className="signup-text">
-                New to qhacks? <Link to="/signup" className="signup-link">Sign Up</Link>
+                New to Activize? <Link to="/signup" className="signup-link">Sign Up</Link>
             </p>
         </div>
     );
