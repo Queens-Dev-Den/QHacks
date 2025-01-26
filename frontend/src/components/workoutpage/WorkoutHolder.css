@@ -37,6 +37,7 @@
     border-radius: 1em;
     box-sizing: border-box;
     width: 100%;
+    position: relative;
 }
 
 .workout-details {
@@ -102,6 +103,43 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edit-button {
+    position: fixed;
+    top: 4em;
+    left: 1.4em;
+    font-size: 24px;
+    background-color: rgb(160, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .delete-button {
+    position: absolute;
+    top: 0.3em;
+    right: 0.3em;
+    font-size: 24px;
+    background-color: rgb(160, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .popup {
@@ -121,6 +159,7 @@
   .popup-content {
     text-align: center;
     height: 86%;
+    width: 16em; /* Set a fixed width */
   }
   
   .popup-content input {
@@ -145,13 +184,9 @@
   }
   
   .popup-content button[type="submit"] {
+    font-weight: 600;
     background-color: #007bff;
     color: white;
-  }
-  
-  .popup-content button[type="button"] {
-    background-color: #ccc;
-    color: black;
   }
 
   .popup-form {
@@ -166,12 +201,10 @@
     flex-direction: column;
   }
 
-  .add-exercise-button {
-    width: 20em;
-  }
-
   .exercise-input {
     display: flex;
+    gap: 0.2em;
+    margin-bottom: 0.3em;
   }
   
   .exercise-input-field{
@@ -186,8 +219,47 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
   }
 
   .exercises-content {
-    width: 80%;
+    width: 115%;
+    height: 22em;
+    align-self: center;
+    overflow: scroll;
+    border-bottom: 0.4em solid white;
+  }
+
+  .exercise-list {
+    display: flex;
+    align-items: start;
+  }
+
+  .add-exercise-button {
+    font-weight: 600;
+    width: 115%;
+    align-self: center;
+    background-color: #007bff;
+    color: white;
+  }
+
+  .cancel-button {
+    font-weight: 600;
+    background-color: rgb(160, 0, 0);
+    color: white;
+  }
+
+  .exercise-field {
+    flex: 3;
+  }
+
+  .reps-field {
+    flex: 1;
+  }
+
+  .sets-field {
+    flex: 1;
   }

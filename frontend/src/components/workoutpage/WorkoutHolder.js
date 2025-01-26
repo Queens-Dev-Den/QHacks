@@ -1,66 +1,80 @@
 import React, { useState, useEffect } from 'react';
 import './WorkoutHolder.css';
+import { FaPlus, FaPencilAlt, FaTrash } from 'react-icons/fa';
 
 const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
   const [workouts, setWorkouts] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [newWorkoutName, setNewWorkoutName] = useState('');
   const [exercises, setExercises] = useState([]);
-  const [workoutData, setWorkoutData] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
+  const [editMode, setEditMode] = useState(false);
 
-  // Simulate workout data change
-  const handleWorkoutChange = (newData) => {
-    setWorkoutData(newData);
-    onWorkoutDataChange(newData);
+  const fetchWorkouts = async () => {
+    if (!userInfo) return;
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/workouts/get-users-workouts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId: userInfo.id }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setWorkouts(data);
+      } else {
+        console.error('Failed to fetch workouts');
+      }
+    } catch (error) {
+      console.error('Error fetching workouts:', error);
+    }
   };
 
   useEffect(() => {
-    const fetchWorkouts = async () => {
-      if (!userInfo) return;
-
-      try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/workouts/get-users-workouts`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ userId: userInfo.id }),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setWorkouts(data);
-        } else {
-          console.error('Failed to fetch workouts');
-        }
-      } catch (error) {
-        console.error('Error fetching workouts:', error);
-      }
-    };
-
     fetchWorkouts();
   }, [userInfo]);
 
   const handleCreateWorkout = async (e) => {
     e.preventDefault();
 
+    if (exercises.length === 0) {
+      setErrorMessage('You must add at least one exercise.');
+      return;
+    }
+
+    const formattedExercises = exercises.map(exercise => ({
+      name: exercise.name,
+      weight: '0', // Default value for weight
+      reps: exercise.reps,
+      sets: exercise.sets
+    }));
+
+    const workoutData = {
+      userId: userInfo.id,
+      name: newWorkoutName,
+      category: 'general-workout', // Default value for category
+      exercises: formattedExercises
+    };
+
     try {
-      const token = localStorage.getItem('authToken');
       const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/workouts/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
         },
-        body: JSON.stringify({ userId: userInfo.id, name: newWorkoutName, exercises }),
+        body: JSON.stringify(workoutData),
       });
 
       if (response.ok) {
-        const newWorkout = await response.json();
-        setWorkouts([...workouts, newWorkout]);
         setShowPopup(false);
         setNewWorkoutName('');
         setExercises([]);
+        setErrorMessage('');
+        window.location.reload(); // Refresh the page
       } else {
         console.error('Failed to create workout');
       }
@@ -85,10 +99,35 @@ const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
     setExercises(newExercises);
   };
 
+  const handleDeleteWorkout = async (workoutId) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/workouts/${workoutId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        }
+      });
+
+      if (response.ok) {
+        setWorkouts(workouts.filter(workout => workout.id !== workoutId));
+      } else {
+        console.error('Failed to delete workout');
+      }
+    } catch (error) {
+      console.error('Error deleting workout:', error);
+    }
+  };
+
   return (
     <div className="workout-container">
       <div className='content'>
-        <button className="plus-button" onClick={() => setShowPopup(true)}>+</button>
+        <button className="edit-button" onClick={() => setEditMode(!editMode)}>
+          <FaPencilAlt />
+        </button>
+        <button className="plus-button" onClick={() => setShowPopup(true)}>
+          <FaPlus />
+        </button>
         <div className="workout-list">
           {workouts.map((workout, workoutIndex) => (
             <div key={workoutIndex} className="workout-item">
@@ -103,6 +142,11 @@ const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
                   </div>
                 ))}
               </div>
+              {editMode && (
+                <button className="delete-button" onClick={() => handleDeleteWorkout(workout.id)}>
+                  <FaTrash />
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -121,13 +165,13 @@ const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
                   placeholder="Workout Name"
                   required
                 />
-                <button type="add-exercise-button" onClick={handleAddExercise}>Add Exercise</button>
+                <button type="button" className='add-exercise-button' onClick={handleAddExercise}>Add Exercise</button>
               </div>
               <div className='exercises-content'>
               {exercises.map((exercise, index) => (
                 <div key={index} className="exercise-input">
                   <input
-                  className="exercise-input-field"
+                  className="exercise-input-field exercise-field"
                     type="text"
                     value={exercise.name}
                     onChange={(e) => handleExerciseChange(index, 'name', e.target.value)}
@@ -135,7 +179,7 @@ const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
                     required
                   />
                   <input
-                  className="exercise-input-field"
+                  className="exercise-input-field sets-field"
                     type="number"
                     value={exercise.sets}
                     onChange={(e) => handleExerciseChange(index, 'sets', e.target.value)}
@@ -143,7 +187,7 @@ const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
                     required
                   />
                   <input
-                  className="exercise-input-field"
+                  className="exercise-input-field reps-field"
                     type="number"
                     value={exercise.reps}
                     onChange={(e) => handleExerciseChange(index, 'reps', e.target.value)}
@@ -154,9 +198,10 @@ const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
                 </div>
               ))}
               </div>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
               <div className="buttons">
                 <button type="submit">Create</button>
-                <button type="button" onClick={() => setShowPopup(false)}>Cancel</button>
+                <button type="button" className="cancel-button" onClick={() => setShowPopup(false)}>Cancel</button>
               </div>
             </form>
           </div>

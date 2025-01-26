@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Workout, Exercise, User, Schedule } = require('../models');
+const verifyToken = require('../middleware/authMiddleware');
 
 // POST request to create a workout
 router.post('/', async (req, res) => {
@@ -86,6 +87,25 @@ router.post('/get-users-workouts', async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'An error occurred while retrieving the workouts' });
+  }
+});
+
+// Route to delete a workout
+router.delete('/:id', verifyToken, async (req, res) => {
+  try {
+    const workoutId = req.params.id;
+    const deletedWorkout = await Workout.destroy({
+      where: { id: workoutId }
+    });
+
+    if (!deletedWorkout) {
+      return res.status(404).json({ error: 'Workout not found' });
+    }
+
+    res.status(200).json({ message: 'Workout deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting workout:', error);
+    res.status(500).json({ error: 'Failed to delete workout' });
   }
 });
 
