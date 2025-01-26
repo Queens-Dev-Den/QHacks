@@ -4,7 +4,6 @@ import './WorkoutFeedback.css';
 const WorkoutFeedback = ({ userInfo }) => {
     const [feedback, setFeedback] = useState(null);
     const [workouts, setWorkouts] = useState({});
-    console.log(JSON.stringify(workouts));
         
     useEffect(() => {
     const fetchWorkouts = async () => {
@@ -44,7 +43,6 @@ const WorkoutFeedback = ({ userInfo }) => {
                 },
                 body: JSON.stringify(workouts),
             });
-            console.log(response.body);
 
             if (!response.ok) {
                 throw new Error('Failed to fetch workout feedback');

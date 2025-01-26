@@ -10,7 +10,6 @@ const workoutsRouter = require('./routes/workouts');
 const userRouter = require('./routes/users');
 const gptRouter = require('./routes/gpt');
 const schedulesRouter = require('./routes/schedules');
-const mealplanRouter = require('./routes/mealplans');
 
 app.use(cors());
 app.use(express.json());
@@ -20,7 +19,6 @@ app.use('/api/workouts', workoutsRouter);
 app.use('/api/users', userRouter);
 app.use('/api/gpt', gptRouter);
 app.use('/api/schedules', schedulesRouter);
-app.use('/api/mealplans', mealplanRouter);
 
 const initializeDatabase = async () => {
   try {

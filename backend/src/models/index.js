@@ -15,8 +15,6 @@ db.User = require('./User')(sequelize, Sequelize.DataTypes);
 db.Workout = require('./Workout')(sequelize, Sequelize.DataTypes);
 db.Exercise = require('./Exercise')(sequelize, Sequelize.DataTypes);
 db.Schedule = require('./Schedule')(sequelize, Sequelize.DataTypes);
-db.Mealplan = require('./Mealplan')(sequelize, Sequelize.DataTypes);
-db.Meal = require('./Meal')(sequelize, Sequelize.DataTypes);
 
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {

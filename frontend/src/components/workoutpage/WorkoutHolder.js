@@ -58,9 +58,8 @@ const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
       category: 'general-workout', // Default value for category
       exercises: formattedExercises
     };
-
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/workouts/create`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/workouts/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +67,6 @@ const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
         },
         body: JSON.stringify(workoutData),
       });
-
       if (response.ok) {
         setShowPopup(false);
         setNewWorkoutName('');
