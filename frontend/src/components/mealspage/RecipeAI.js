@@ -4,7 +4,7 @@ import './RecipeAI.css';
 const RecipeAI = () => {
   const [ingredients, setIngredients] = useState([]);
   const [ingredient, setIngredient] = useState('');
-  const [generatedRecipe, setGeneratedRecipe] = useState('');
+  const [generatedRecipe, setGeneratedRecipe] = useState('Enter some ingredients and tap on Generate New Recipe to generate a recipe.');
 
   const addIngredient = () => {
     if (ingredient.trim()) {
@@ -17,66 +17,60 @@ const RecipeAI = () => {
     setIngredients(ingredients.filter((_, i) => i !== index));
   };
 
-  const generateRecipe = async () => {
-    const prompt = `Create a recipe using the following ingredients: ${ingredients.join(', ')}`;
-    console.log('Generating recipe with prompt:', prompt);
-
+  const handleSubmit = async () => {
     try {
-      const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/gpt/meal-feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          prompt,
-          max_tokens: 150
-        })
+        body: JSON.stringify({ mealData: ingredients }), // Assuming mealData is similar to ingredients
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Generated recipe:', data.choices[0].text);
-        setGeneratedRecipe(data.choices[0].text);
-      } else {
-        console.error('Failed to generate recipe');
+      if (!response.ok) {
+        throw new Error('Failed to fetch recipe');
       }
+
+      const data = await response.json();
+      setGeneratedRecipe(data.message);
     } catch (error) {
-      console.error('Error generating recipe:', error);
+      console.error('Error fetching recipe:', error);
     }
   };
 
   return (
+    <div className='recipe-ai'>
     <div className="recipe-container">
       <h2>Add Ingredients</h2>
       <form className="recipe-form" onSubmit={(e) => { e.preventDefault(); addIngredient(); }}>
-        <div className="input-group">
+        <div className="ingredient-input-group">
           <input
+          className='ingredient-input'
             type="text"
             value={ingredient}
             onChange={(e) => setIngredient(e.target.value)}
             placeholder="Enter ingredient"
             required
           />
-          <button type="button" onClick={addIngredient}>Add</button>
+          <button className="ingredient-button" type="button" onClick={addIngredient}>Add</button>
         </div>
         <div className="ingredients-list">
-          <ul>
+          <ul className='ingrelist'>
             {ingredients.map((ing, index) => (
-              <li key={index}>
+              <li className='ingredient' key={index}>
                 {ing}
                 <button type="button" className="delete-button" onClick={() => deleteIngredient(index)}>X</button>
               </li>
             ))}
           </ul>
         </div>
-        <button type="button" className="generate-button" onClick={generateRecipe}>Generate New Recipe</button>
       </form>
-      {generatedRecipe && (
+      <button type="button" className="generate-button" onClick={handleSubmit}>Generate New Recipe</button>
+    </div>
         <div className="generated-recipe">
-          <h3>Generated Recipe</h3>
-          <p>{generatedRecipe}</p>
+          <h3 className='gen-rec-title'>Generated Recipe</h3>
+          <p className='gen-rec'>{generatedRecipe}</p>
         </div>
-      )}
     </div>
   );
 };

@@ -9,12 +9,3 @@
 .meals-title {
     margin-bottom: 0;
 }
-
-.progress-rings {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    position: relative;
-    width: 100%;
-    height: 10.5em;
-}

@@ -61,10 +61,10 @@ router.post('/meal-feedback', async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
-                { role: "system", content: "You are a personal trainer. Provide feedback and suggestions based on the users meal plan json data. Respond with bullet points. Maximum length of your responses is 100 words or 3 bullet points, whichever comes first. Don't use any formatting symbols in your response." },
+                { role: "system", content: "You are a personal trainer. Provide feedback and suggestions based on the users meal plan json data. Respond with bullet points. Maximum length of your responses is 100 words or 3 bullet points, whichever comes first. Don't use any formatting symbols in your response. Give them a recipe with the ingredients from their ingredient list." },
                 {
                     role: "user",
-                    content: `Here is my workout data: ${JSON.stringify(mealData)}`,
+                    content: `Here is my ingredient list: ${JSON.stringify(mealData)}`,
                 },
             ],
             max_tokens: 150,
