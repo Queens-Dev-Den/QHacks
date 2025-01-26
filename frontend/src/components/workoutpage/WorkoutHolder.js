@@ -114,7 +114,7 @@ const WorkoutHolder = ({ userInfo }) => {
                   placeholder="Workout Name"
                   required
                 />
-                <button type="add-exercise-button" onClick={handleAddExercise}>Add Exercise</button>
+                <button type="button" className='add-exercise-button' onClick={handleAddExercise}>Add Exercise</button>
               </div>
               <div className='exercises-content'>
               {exercises.map((exercise, index) => (
@@ -149,7 +149,7 @@ const WorkoutHolder = ({ userInfo }) => {
               </div>
               <div className="buttons">
                 <button type="submit">Create</button>
-                <button type="button" onClick={() => setShowPopup(false)}>Cancel</button>
+                <button type="button" className="cancel-button" onClick={() => setShowPopup(false)}>Cancel</button>
               </div>
             </form>
           </div>

@@ -120,6 +120,7 @@
   .popup-content {
     text-align: center;
     height: 86%;
+    width: 16em; /* Set a fixed width */
   }
   
   .popup-content input {
@@ -144,13 +145,9 @@
   }
   
   .popup-content button[type="submit"] {
+    font-weight: 600;
     background-color: #007bff;
     color: white;
-  }
-  
-  .popup-content button[type="button"] {
-    background-color: #ccc;
-    color: black;
   }
 
   .popup-form {
@@ -163,10 +160,6 @@
   .popup-top-content {
     display: flex;
     flex-direction: column;
-  }
-
-  .add-exercise-button {
-    width: 20em;
   }
 
   .exercise-input {
@@ -188,5 +181,28 @@
   }
 
   .exercises-content {
-    width: 80%;
+    width: 115%;
+    height: 22em;
+    align-self: center;
+    overflow: scroll;
+    border-bottom: 0.4em solid white;
+  }
+
+  .exercise-list {
+    display: flex;
+    align-items: start;
+  }
+
+  .add-exercise-button {
+    font-weight: 600;
+    width: 115%;
+    align-self: center;
+    background-color: #007bff;
+    color: white;
+  }
+
+  .cancel-button {
+    font-weight: 600;
+    background-color: rgb(160, 0, 0);
+    color: white;
   }
