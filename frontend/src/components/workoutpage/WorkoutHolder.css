@@ -1,0 +1,265 @@
+.workout-container {
+    display: flex;
+    flex-direction: column;
+    border: 0.3em solid white;
+    border-radius: 1.25em;
+    margin: 1.5em;
+    margin-bottom: 0.5em;
+    text-align: left;
+    background-color: black;
+    align-items: flex-start;
+    padding: 1em;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    height: 45vh;
+    overflow-y: scroll;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.workout-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    width: 100%;
+}
+
+.workout-item {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border: 0.2em solid #ccc;
+    border-radius: 1em;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+}
+
+.workout-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: start;
+    width: 100%;
+}
+
+.workout-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.exercise-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.exercise-details {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1.1em;
+}
+
+.exercise-reps {
+    font-size: 0.6em;
+    color: #666;
+}
+
+.exercise-name {
+    margin-top: 0.3em;
+    margin-bottom: 0;
+}
+
+.exercise-sets {
+    margin-top: 0.3em;
+    margin-bottom: 0;
+    margin-left: auto; /* Pushes the element to the right */
+    padding-left: 0.4em;
+}
+
+.workout-container {
+    position: relative;
+    align-items: center;
+  }
+  
+  .plus-button {
+    position: fixed;
+    top: 4em;
+    right: 1.4em;
+    font-size: 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edit-button {
+    position: fixed;
+    top: 4em;
+    left: 1.4em;
+    font-size: 24px;
+    background-color: rgb(160, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .delete-button {
+    position: absolute;
+    top: 0.3em;
+    right: 0.3em;
+    font-size: 24px;
+    background-color: rgb(160, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 4em;
+    left: auto;
+    width: 85%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    border: 0.4em solid white;
+    border-radius: 1.5em;
+    background-color: black;
+  }
+  
+  .popup-content {
+    text-align: center;
+    height: 86%;
+    width: 16em; /* Set a fixed width */
+  }
+  
+  .popup-content input {
+    margin-bottom: 10px;
+    padding: 0.4em;
+    height: 1.8em;
+    width: 110%;
+    color: white;
+    background-color: black;
+    border: 0.3em solid white;
+    border-radius: 0.6em;
+    padding-left: 0.3;
+    align-self: center;
+  }
+  
+  .popup-content button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .popup-content button[type="submit"] {
+    font-weight: 600;
+    background-color: #007bff;
+    color: white;
+  }
+
+  .popup-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .popup-top-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .exercise-input {
+    display: flex;
+    gap: 0.2em;
+    margin-bottom: 0.3em;
+  }
+  
+  .exercise-input-field{
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .exercise-input button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .exercises-content {
+    width: 115%;
+    height: 22em;
+    align-self: center;
+    overflow: scroll;
+    border-bottom: 0.4em solid white;
+  }
+
+  .exercise-list {
+    display: flex;
+    align-items: start;
+  }
+
+  .add-exercise-button {
+    font-weight: 600;
+    width: 115%;
+    align-self: center;
+    background-color: #007bff;
+    color: white;
+  }
+
+  .cancel-button {
+    font-weight: 600;
+    background-color: rgb(160, 0, 0);
+    color: white;
+  }
+
+  .exercise-field {
+    flex: 3;
+  }
+
+  .reps-field {
+    flex: 1;
+  }
+
+  .sets-field {
+    flex: 1;
+  }

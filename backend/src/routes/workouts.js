@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { Workout, Exercise, User } = require('../models'); // Adjust the path as needed
+const { Workout, Exercise, User, Schedule } = require('../models');
+const verifyToken = require('../middleware/authMiddleware');
 
 // POST request to create a workout
 router.post('/', async (req, res) => {
   try {
-    const { userId, category, exercises } = req.body;
+    const { userId, name, category, exercises } = req.body;
 
     // Validate input
-    if (!userId || !category || !Array.isArray(exercises)) {
+    if (!userId || !name || !category || !Array.isArray(exercises)) {
       return res.status(400).json({ error: 'Invalid input' });
     }
 
@@ -20,6 +21,7 @@ router.post('/', async (req, res) => {
     // Create the workout
     const workout = await Workout.create({
       userId,
+      name,
       category,
     });
 
@@ -57,9 +59,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-
 // GET request to return user's workouts
-router.post('/getuserworkouts', async (req, res) => {
+router.post('/get-users-workouts', async (req, res) => {
   try {
     const { userId } = req.body;
 
@@ -86,6 +87,25 @@ router.post('/getuserworkouts', async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'An error occurred while retrieving the workouts' });
+  }
+});
+
+// Route to delete a workout
+router.delete('/:id', verifyToken, async (req, res) => {
+  try {
+    const workoutId = req.params.id;
+    const deletedWorkout = await Workout.destroy({
+      where: { id: workoutId }
+    });
+
+    if (!deletedWorkout) {
+      return res.status(404).json({ error: 'Workout not found' });
+    }
+
+    res.status(200).json({ message: 'Workout deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting workout:', error);
+    res.status(500).json({ error: 'Failed to delete workout' });
   }
 });
 

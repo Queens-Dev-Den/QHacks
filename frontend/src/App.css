@@ -42,6 +42,12 @@ body {
   color: white;
 }
 
+html, body {
+  overflow: hidden; /* Prevent scrolling */
+  height: 100%; /* Ensure the body takes the full height */
+  margin: 0; /* Remove default margin */
+}
+
 /* Additional dark mode styles */
 h1 {
   color: white;
