@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { Workout, Exercise, User } = require('../models'); // Adjust the path as needed
+const { Workout, Exercise, User, Schedule } = require('../models');
 
 // POST request to create a workout
 router.post('/', async (req, res) => {
   try {
-    const { userId, category, exercises } = req.body;
+    const { userId, name, category, exercises } = req.body;
 
     // Validate input
-    if (!userId || !category || !Array.isArray(exercises)) {
+    if (!userId || !name || !category || !Array.isArray(exercises)) {
       return res.status(400).json({ error: 'Invalid input' });
     }
 
@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
     // Create the workout
     const workout = await Workout.create({
       userId,
+      name,
       category,
     });
 
@@ -57,9 +58,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-
 // GET request to return user's workouts
-router.post('/getuserworkouts', async (req, res) => {
+router.post('/get-users-workouts', async (req, res) => {
   try {
     const { userId } = req.body;
 
