@@ -3,32 +3,9 @@ import './Assistant.css';
 import { GiBiceps } from "react-icons/gi";
 
 const Assistant = () => {
-  const [isChatOpen, setIsChatOpen] = useState(false);
   const [content, setContent] = useState('');
-  const [responseMessage, setResponseMessage] = useState('Welcome! How can I assist you today?');
-  const popupRef = useRef(null);
+  const [responseMessage, setResponseMessage] = useState('Hi, I\'m your personal trainer! What can I help you with today?');
 
-  const toggleChat = () => {
-    setIsChatOpen(!isChatOpen);
-  };
-
-  const handleClickOutside = (event) => {
-    if (popupRef.current && !popupRef.current.contains(event.target)) {
-      setIsChatOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    if (isChatOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isChatOpen]);
 
   const handleSubmit = async (e) => {
     setResponseMessage('Thinking...');
@@ -58,17 +35,11 @@ const Assistant = () => {
     };
 
   return (
-    <div className={`assistant-container ${isChatOpen ? 'blur-background' : ''}`} onClick={toggleChat}>
-      <div className="top-content">
-        <GiBiceps className="assistant-icon" />
-        <p className="assistant-top-text">Hi, I'm your personal trainer! What can I help you with today?</p>
-      </div>
-      <p className="assistant-bottom-text"><em>Tap here to talk to me...</em></p>
-
-      {isChatOpen && (
-        <div className="chat-popup" ref={popupRef} onClick={(e) => e.stopPropagation()}>
+    <div className={'assistant-container'}>
+        <div className="chat-popup" >
           <div className="chat-header">
-            <h2>Chat with Personal Trainer</h2>
+            <GiBiceps className="assistant-icon" />
+            <h2>Activtize AI Personal Trainer</h2>
           </div>
           <div className='chat-box'>
             <div className="chat-body">
@@ -90,7 +61,6 @@ const Assistant = () => {
             </div>
             </div>
         </div>
-      )}
     </div>
   );
 };
