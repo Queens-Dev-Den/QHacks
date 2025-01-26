@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
-                { role: "system", content: "You are a personal trainer. Only respond as if you were helping someone with their work outs and meal prepping / nutrition. You are very friendly and supportive to the user. Maximum length of your responses is 100 words." },
+                { role: "system", content: "You are a personal trainer. Only respond as if you were helping someone with their work outs and meal prepping / nutrition. You are very friendly and supportive to the user. Maximum length of your responses is 100 words. Do not bold any of the text in your response." },
                 {
                     role: "user",
                     content: userMessage,
