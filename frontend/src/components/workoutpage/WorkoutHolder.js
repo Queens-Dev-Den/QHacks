@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './WorkoutHolder.css';
 
-const WorkoutHolder = ({ userInfo }) => {
+const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
   const [workouts, setWorkouts] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [newWorkoutName, setNewWorkoutName] = useState('');
   const [exercises, setExercises] = useState([]);
+  const [workoutData, setWorkoutData] = useState({});
+
+  // Simulate workout data change
+  const handleWorkoutChange = (newData) => {
+    setWorkoutData(newData);
+    onWorkoutDataChange(newData);
+  };
 
   useEffect(() => {
     const fetchWorkouts = async () => {
