@@ -34,6 +34,7 @@ router.post('/', async (req, res) => {
         carbohydrates: meal.carbohydrates,
         fat: meal.fat,
         calories: meal.calories,
+        day: meal.day,
       });
     });
 
@@ -61,10 +62,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET request to retrieve a user's meal plan
-router.get('/:userId', async (req, res) => {
+// POST request to retrieve a user's meal plan
+router.post('/get-users-mealplans', async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { userId } = req.body;
 
     // Validate input
     if (!userId) {
@@ -97,5 +98,28 @@ router.get('/:userId', async (req, res) => {
     return res.status(500).json({ error: 'An error occurred while retrieving the meal plan', details: error.message });
   }
 });
+
+router.get('/test', async (req, res) => {
+    try {
+      const workouts = await Mealplan.findAll({
+        include: [
+          {
+            model: Meal,
+            as: 'meals',
+          },
+          {
+            model: User,
+            as: 'user',
+            attributes: ['username', 'email'],
+          },
+        ],
+      });
+  
+      return res.status(200).json(workouts);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'An error occurred while retrieving the workouts' });
+    }
+  });
 
 module.exports = router;
