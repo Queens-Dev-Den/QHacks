@@ -30,7 +30,6 @@ const HomePage = () => {
     <div className="homepage-container">
       <h1 className="homepage-title" dangerouslySetInnerHTML={{ __html: currentDate }}></h1>
       <Assistant />
-      <Summary />
     </div>
   );
 };
