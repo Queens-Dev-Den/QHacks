@@ -1,0 +1,24 @@
+/* filepath: /c:/Users/jorda/repos/QHacks/frontend/src/components/mealspage/ProteinProgressRing.css */
+.progress-ring-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.progress-ring__text {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #7e7e7e;
+  margin: 0;
+}
