@@ -29,4 +29,54 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.post('/workout-feedback', async (req, res) => {
+    try {
+        const { workoutData } = req.body;
+
+        const completion = await openai.chat.completions.create({
+            model: "gpt-4o-mini",
+            messages: [
+                { role: "system", content: "You are a personal trainer. Provide feedback and suggestions based on the users workout json data. Respond with bullet points. Maximum length of your responses is 100 words or 3 bullet points, whichever comes first. Don't use any formatting symbols in your response." },
+                {
+                    role: "user",
+                    content: `Here is my workout data: ${JSON.stringify(workoutData)}`,
+                },
+            ],
+            max_tokens: 150,
+            store: true,
+            temperature: 0.7,
+        });
+
+        return res.status(200).json({ message: completion.choices[0].message.content });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'An error occurred while processing your request.' });
+    }
+});
+
+router.post('/meal-feedback', async (req, res) => {
+    try {
+        const { mealData } = req.body;
+
+        const completion = await openai.chat.completions.create({
+            model: "gpt-4o-mini",
+            messages: [
+                { role: "system", content: "You are a personal trainer. Provide feedback and suggestions based on the users meal plan json data. Respond with bullet points. Maximum length of your responses is 100 words or 3 bullet points, whichever comes first. Don't use any formatting symbols in your response." },
+                {
+                    role: "user",
+                    content: `Here is my workout data: ${JSON.stringify(mealData)}`,
+                },
+            ],
+            max_tokens: 150,
+            store: true,
+            temperature: 0.7,
+        });
+
+        return res.status(200).json({ message: completion.choices[0].message.content });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'An error occurred while processing your request.' });
+    }
+});
+
 module.exports = router;
