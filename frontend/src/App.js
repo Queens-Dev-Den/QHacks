@@ -9,8 +9,10 @@ import './App.css';
 import ProtectedRoute from './components/routing/ProtectedRoute';
 import AlreadyLoggedIn from './components/routing/AlreadyLoggedIn';
 import Layout from './components/layout/Layout';
+import ProteinProgressRing from './components/mealspage/ProteinProgressRing';
 
 const App = () => {
+  const userId = 1; // Replace with the actual user ID
 
   return (
     <Router>
@@ -53,6 +55,10 @@ const App = () => {
             <ProtectedRoute>
               <Layout>
                 <MealsPage/>
+                <div>
+                  <h1>Nutrient Tracker</h1>
+                  <ProteinProgressRing userId={userId} />
+                </div>
               </Layout>
             </ProtectedRoute>
           }

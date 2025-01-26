@@ -4,6 +4,7 @@ import '../styles/MealsPage.css';
 import ProteinProgressRing from '../components/mealspage/ProteinProgressRing';
 import CaloriesProgressRing from '../components/mealspage/CaloriesProgressRing';
 import CarbsProgressRing from '../components/mealspage/CarbsProgressRing';
+import RecipeAI from '../components/mealspage/RecipeAI';
 
 const MealsPage = () => {
   const proteinConsumed = 60; // Example value
@@ -21,6 +22,7 @@ const MealsPage = () => {
         <CaloriesProgressRing caloriesConsumed={caloriesConsumed} caloriesGoal={caloriesGoal} />
         <CarbsProgressRing carbsConsumed={carbsConsumed} carbsGoal={carbsGoal} />
       </div>
+      <RecipeAI />
     </div>
   );
 };
