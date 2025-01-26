@@ -1,0 +1,29 @@
+.workoutfeedback-container {
+    display: flex;
+    flex-direction: column;
+    border: 0.3em solid white;
+    border-radius: 1.25em;
+    margin: 1.5em;
+    text-align: left;
+    background-color: black;
+    align-items: flex-start;
+    padding: 1em;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    height: 20vh;
+    padding-top: 0.5em;
+    margin-top: 0.5em;
+  }
+  
+.workoutfeedback-title {
+    font-size: 1.5em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0em;
+}
+
+.workoutfeedback-text {
+    font-size: 1.2em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-wrap: wrap;
+}

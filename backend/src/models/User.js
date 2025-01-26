@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    workoutPlan: {
+      type: DataTypes.JSON, // Store the workout plan as a JSON object
+      allowNull: true,
+    },
   }, {
     timestamps: true, // Automatically manage createdAt and updatedAt fields
     underscored: true, // Use snake_case for automatically added fields
@@ -33,6 +37,17 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   });
+
+  User.associate = (models) => {
+    User.hasMany(models.Workout, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
+    User.hasMany(models.Schedule, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
+  };
 
   return User;
 };
