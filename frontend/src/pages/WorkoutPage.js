@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/WorkoutPage.css';
 import WorkoutHolder from '../components/workoutpage/WorkoutHolder';
+import WorkoutFeedback from '../components/workoutpage/WorkoutFeedback';
 import getUserInfo from '../utils/user-info';
 
 const WorkoutPage = () => {
@@ -23,6 +24,7 @@ const WorkoutPage = () => {
     <div className="workoutpage-container">
       <h1 className='workoutpage-title'>Workout</h1>
       <WorkoutHolder userInfo={userInfo} />
+      <WorkoutFeedback userInfo={userInfo} /> 
     </div>
   );
 };

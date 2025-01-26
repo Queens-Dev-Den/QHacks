@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './WorkoutHolder.css';
 import { FaPlus, FaPencilAlt, FaTrash } from 'react-icons/fa';
 
-const WorkoutHolder = ({ userInfo }) => {
+const WorkoutHolder = ({ userInfo, onWorkoutDataChange }) => {
   const [workouts, setWorkouts] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [newWorkoutName, setNewWorkoutName] = useState('');
